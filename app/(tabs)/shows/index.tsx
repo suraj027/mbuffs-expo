@@ -1,11 +1,9 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import GenrePill from '../../../components/ui/GenrePill';
 import NetworkCard from '../../../components/ui/NetworkCard';
 import PosterCard from '../../../components/ui/PosterCard';
-import ScreenHeader from '../../../components/ui/ScreenHeader';
 
 // Dummy Data for TV Shows
 const CURRENTLY_STREAMING = [
@@ -56,7 +54,6 @@ const GENRES = [
 const POSTER_WIDTH = 160;
 
 export default function ShowsScreen() {
-    const insets = useSafeAreaInsets();
     const router = useRouter();
 
     return (
@@ -65,10 +62,6 @@ export default function ShowsScreen() {
                 contentContainerStyle={[styles.scrollContent, { paddingBottom: 100 }]}
                 showsVerticalScrollIndicator={false}
             >
-                <ScreenHeader title="Shows" />
-
-
-
                 <View style={styles.section}>
                     <TouchableOpacitySectionHeader title="Currently Streaming" subtitle="Discover your next watch" />
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>

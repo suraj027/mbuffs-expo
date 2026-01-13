@@ -2,8 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import PosterCard from '../../components/ui/PosterCard';
-import ScreenHeader from '../../components/ui/ScreenHeader';
+import PosterCard from '../../../components/ui/PosterCard';
 
 // Dummy Data
 const TOP_RESULTS = [
@@ -29,9 +28,6 @@ export default function SearchScreen() {
 
     return (
         <View style={styles.container}>
-            <ScreenHeader title="Search" />
-
-
             {/* Search Input Area */}
             <View style={styles.searchBarContainer}>
                 <View style={styles.searchBar}>

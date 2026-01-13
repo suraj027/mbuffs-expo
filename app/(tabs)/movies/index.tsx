@@ -1,9 +1,7 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import PosterCard from '../../../components/ui/PosterCard';
-import ScreenHeader from '../../../components/ui/ScreenHeader';
 
 // Dummy Data
 const THEATRICAL_RELEASES = [
@@ -56,38 +54,14 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const POSTER_WIDTH = 160;
 
 export default function MoviesScreen() {
-    const insets = useSafeAreaInsets();
     const router = useRouter();
 
     return (
         <View style={styles.container}>
-            {/* 
-        Sticky Header Logic:
-        For simple implementation, we put GlassHeader absolutely on top 
-        OR we rely on ScrollView contentContainerStyle. 
-        However, the requirement is "GlassHeader with large title". 
-        If it mimics iOS Large Title, it scrolls. 
-        The "Sticky" part usually refers to the small title bar that appears on scroll.
-        For this simplified version, we'll put the GlassHeader at the top of the View (static) 
-        OR inside ScrollView.
-        Screenshots show "Movies" at the top. 
-        Let's put it at the very top of ScrollView so it scrolls away?
-        Actually, standard iOS Large Title scrolls away, and a small title fades in.
-        My GlassHeader is a static component. 
-        I will place it as a static header for now (always visible) or scrollable.
-        Re-reading designs: "Glass header with large title" in Plan.md.
-        Let's make it the first item in ScrollView for the Large Title look.
-        (Note: Real iOS Large Title collapses. Implementing that manually is complex.
-         For this MVP, valid to have it scrollable).
-      */}
-
             <ScrollView
-                contentContainerStyle={[styles.scrollContent, { paddingBottom: 100 }]} // Padding for TabBar
+                contentContainerStyle={[styles.scrollContent, { paddingBottom: 100 }]}
                 showsVerticalScrollIndicator={false}
             >
-                <ScreenHeader title="Movies" />
-
-
                 <View style={styles.section}>
                     <TouchableOpacitySectionHeader title="Theatrical Releases" subtitle="Discover the latest theatrical releases" />
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>

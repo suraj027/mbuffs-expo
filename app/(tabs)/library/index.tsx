@@ -1,9 +1,7 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import PosterCard from '../../../components/ui/PosterCard';
-import ScreenHeader from '../../../components/ui/ScreenHeader';
 
 // Dummy Data
 const WATCHLIST = [
@@ -27,7 +25,6 @@ const POSTER_WIDTH = 100; // Smaller for library grid/list? Or standard? Let's u
 // Let's stick to Sections for "Watchlist", "History" etc.
 
 export default function LibraryScreen() {
-    const insets = useSafeAreaInsets();
     const router = useRouter();
 
     return (
@@ -36,10 +33,6 @@ export default function LibraryScreen() {
                 contentContainerStyle={[styles.scrollContent, { paddingBottom: 100 }]}
                 showsVerticalScrollIndicator={false}
             >
-                <ScreenHeader title="Library" />
-
-
-
                 <View style={styles.section}>
                     <TouchableOpacitySectionHeader title="Watchlist" subtitle="Movies and shows you want to watch" />
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>
