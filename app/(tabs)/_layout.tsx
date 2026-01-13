@@ -1,35 +1,43 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Icon, Label, NativeTabs } from 'expo-router/unstable-native-tabs';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+    return (
+        <NativeTabs>
+            {/* movies directory with index.tsx */}
+            <NativeTabs.Trigger
+                name="movies/index"
+                options={{ title: 'Movies' }}
+            >
+                <Icon sfSymbol="film" />
+                <Label>Movies</Label>
+            </NativeTabs.Trigger>
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
+            {/* shows directory with index.tsx */}
+            <NativeTabs.Trigger
+                name="shows/index"
+                options={{ title: 'Shows' }}
+            >
+                <Icon sfSymbol="tv" />
+                <Label>Shows</Label>
+            </NativeTabs.Trigger>
+
+            {/* library directory with index.tsx */}
+            <NativeTabs.Trigger
+                name="library/index"
+                options={{ title: 'Library' }}
+            >
+                <Icon sfSymbol="books.vertical" />
+                <Label>Library</Label>
+            </NativeTabs.Trigger>
+
+            {/* search.tsx direct file */}
+            <NativeTabs.Trigger
+                name="search"
+                options={{ title: 'Search' }}
+            >
+                <Icon sfSymbol="magnifyingglass" />
+                <Label>Search</Label>
+            </NativeTabs.Trigger>
+        </NativeTabs>
+    );
 }
